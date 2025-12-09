@@ -1,0 +1,23 @@
+.gh-indent {
+  font-family: monospace;
+  display: inline-block;
+}
+
+/* colors used for highlighting indents */
+.gh-indent-yellow {
+  color: rgba(255, 255, 100, 0.6);
+}
+.gh-indent-green {
+  color: rgba(100, 255, 100, 0.6);
+}
+.gh-indent-red {
+  color: rgba(255, 100, 100, 0.6);
+}
+.gh-indent-blue {
+  color: rgba(100, 100, 255, 0.6);
+}
+
+/* color used for highlighting invalid indents */
+.gh-indent-error {
+  color: rgba(255, 50, 50, 1);
+}
