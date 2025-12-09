@@ -2,7 +2,7 @@
 
 A cross-browser extension for Chrome and Firefox that highlights GitHub repository tabs with custom colors and indent levels, enhancing code readability and navigation.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) [![Open Issues](https://img.shields.io/github/issues/nihaltp/tab-highlighter)](https://github.com/nihaltp/tab-highlighter/issues) [![Pull Requests](https://img.shields.io/github/issues-pr/nihaltp/tab-highlighter)](https://github.com/nihaltp/tab-highlighter/pulls)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) [![Open Issues](https://img.shields.io/github/issues/nihaltp/tab-highlighter)](https://github.com/nihaltp/tab-highlighter/issues) [![Pull Requests](https://img.shields.io/github/issues-pr/nihaltp/tab-highlighter)](https://github.com/nihaltp/tab-highlighter/pulls) [![GitHub release](https://img.shields.io/github/release/nihaltp/tab-highlighter.svg)](https://GitHub.com/nihaltp/tab-highlighter/releases/)
 
 ## 📚 Table of Contents
 
