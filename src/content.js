@@ -4,37 +4,39 @@ const ghIndentStyles = [
   "gh-indent-red",
   "gh-indent-blue",
 ];
-const lines = document.querySelectorAll(".react-file-line");
 const indentSize = 4; // number of spaces per indent level
 const tabReplacement = "_"; // character to replace spaces with for visibility
 
-lines.forEach((line) => {
-  const nodes = Array.from(line.childNodes);
+function highlightIndents() {
+  const lines = document.querySelectorAll(".react-file-line");
+  lines.forEach((line) => {
+    const nodes = Array.from(line.childNodes);
 
-  const node = nodes[0];
+    const node = nodes[0];
 
-  // if the node is not text or a span, return
-  if (node.nodeName !== "#text" && node.nodeName !== "SPAN") return;
+    // if the node is not text or a span, return
+    if (node.nodeName !== "#text" && node.nodeName !== "SPAN") return;
 
-  // if the node is a span, handle it
-  if (node.nodeName === "SPAN") {
-    handleSpan(nodes);
-    return;
-  }
+    // if the node is a span, handle it
+    if (node.nodeName === "SPAN") {
+      handleSpan(nodes);
+      return;
+    }
 
-  if (node.data === "\n") return;
+    if (node.data === "\n") return;
 
-  // if the node is text, check if it is an indent
-  const indent = node.data.match(/^\s*/)[0];
-  if (indent.length === 0) return;
+    // if the node is text, check if it is an indent
+    const indent = node.data.match(/^\s*/)[0];
+    if (indent.length === 0) return;
 
-  // create the master span which will hold all the spans
-  const masterSpan = document.createElement("span");
-  masterSpan.className = "gh-indent";
+    // create the master span which will hold all the spans
+    const masterSpan = document.createElement("span");
+    masterSpan.className = "gh-indent";
 
-  createIndentSpans(indent, masterSpan);
-  line.replaceChild(masterSpan, node);
-});
+    createIndentSpans(indent, masterSpan);
+    line.replaceChild(masterSpan, node);
+  });
+}
 
 function handleSpan(nodes) {
   if (nodes.length === 0) return;
@@ -93,3 +95,16 @@ function createErrorSpan(indent, i, masterSpan) {
   span.textContent = indent.slice(i).replace(/ /g, tabReplacement);
   masterSpan.appendChild(span);
 }
+
+// run once on load
+highlightIndents();
+
+// watch for changes to the DOM
+const observer = new MutationObserver((mutations) => {
+  highlightIndents();
+});
+
+observer.observe(document.body, {
+  childList: true,
+  subtree: true,
+});
