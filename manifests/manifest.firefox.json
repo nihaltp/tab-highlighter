@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Tab Highlighter: Github Tab Colorizer",
   "homepage_url": "https://github.com/nihaltp/tab_highlighter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Highlight your GitHub tabs with custom colors for better organization.",
 
   "author": "Nihal T P",
