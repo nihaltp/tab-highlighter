@@ -7,12 +7,19 @@
     "build:chrome": "cross-env TARGET_BROWSER=chrome node scripts/build.js",
     "build:firefox": "cross-env TARGET_BROWSER=firefox node scripts/build.js",
     "build": "node scripts/build.js",
-    "version": "node scripts/update-manifests.js"
+    "version": "node scripts/update-manifests.js",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{js,css,json,md}": [
+      "prettier --write"
+    ]
   },
   "devDependencies": {
     "cross-env": "^10.1.0",
     "fs-extra": "^11.3.2",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
     "prettier": "^3.6.2"
-  },
-  "dependencies": {}
+  }
 }
