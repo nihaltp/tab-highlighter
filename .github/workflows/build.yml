@@ -1,0 +1,45 @@
+name: Build and Release Extension
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build extensions
+        run: npm run build
+
+      - name: Zip Chrome build
+        run: |
+          cd dist/chrome
+          zip -r ../../tab-highlighter-chrome.zip .
+
+      - name: Zip Firefox build
+        run: |
+          cd dist/firefox
+          zip -r ../../tab-highlighter-firefox.zip .
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            tab-highlighter-chrome.zip
+            tab-highlighter-firefox.zip
