@@ -2,15 +2,13 @@
   "manifest_version": 3,
   "name": "Tab Highlighter: Github Tab Colorizer",
   "homepage_url": "https://github.com/nihaltp/tab_highlighter",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Highlight your GitHub tabs with custom colors for better organization.",
-
   "author": "Nihal T P",
   "developer": {
     "name": "Nihal T P",
     "url": "https://github.com/nihaltp"
   },
-
   "icons": {
     "16": "icons/icon16.png",
     "32": "icons/icon32.png",
@@ -19,11 +17,8 @@
     "128": "icons/icon128.png",
     "256": "icons/icon256.png"
   },
-
   "permissions": ["storage"],
-
   "host_permissions": ["https://github.com/*", "https://www.github.com/*"],
-
   "action": {
     "default_title": "Tab Highlighter",
     "default_icon": {
@@ -36,7 +31,6 @@
     },
     "default_popup": "src/popup/popup.html"
   },
-
   "content_scripts": [
     {
       "matches": ["https://github.com/*", "https://www.github.com/*"],
@@ -45,14 +39,12 @@
       "run_at": "document_end"
     }
   ],
-
   "web_accessible_resources": [
     {
       "resources": ["src/content/content.css"],
       "matches": ["https://www.github.com/*", "https://github.com/*"]
     }
   ],
-
   "browser_specific_settings": {
     "gecko": {
       "id": "tab-highlighter@nihaltp",
