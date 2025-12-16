@@ -2,7 +2,11 @@
 
 A cross-browser extension for Chrome and Firefox that highlights GitHub repository tabs with custom colors and indent levels, enhancing code readability and navigation.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) [![Open Issues](https://img.shields.io/github/issues/nihaltp/tab-highlighter)](https://github.com/nihaltp/tab-highlighter/issues) [![Pull Requests](https://img.shields.io/github/issues-pr/nihaltp/tab-highlighter)](https://github.com/nihaltp/tab-highlighter/pulls) [![GitHub release](https://img.shields.io/github/release/nihaltp/tab-highlighter.svg)](https://GitHub.com/nihaltp/tab-highlighter/releases/)
+🦊 Available on Firefox Add-ons with automatic updates. [![Firefox Add-on](https://img.shields.io/amo/v/tabhighlighter)](https://addons.mozilla.org/en-US/firefox/addon/tabhighlighter/)
+
+🌐 Chrome support via GitHub Releases.
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) [![Open Issues](https://img.shields.io/github/issues/nihaltp/tab-highlighter)](https://github.com/nihaltp/tab-highlighter/issues) [![Pull Requests](https://img.shields.io/github/issues-pr/nihaltp/tab-highlighter)](https://github.com/nihaltp/tab-highlighter/pulls) [![Latest Release](https://img.shields.io/github/release/nihaltp/tab-highlighter.svg)](https://github.com/nihaltp/tab-highlighter/releases/latest)
 
 ## 📚 Table of Contents
 
@@ -10,18 +14,24 @@ A cross-browser extension for Chrome and Firefox that highlights GitHub reposito
   - [📚 Table of Contents](#-table-of-contents)
   - [Features](#features)
   - [Installation \& Usage](#installation--usage)
+    - [Firefox (Recommended)](#firefox-recommended)
+    - [Manual Installation](#manual-installation)
+      - [Chrome / Chromium](#chrome--chromium)
+      - [Firefox (manual)](#firefox-manual)
+    - [Using the Extension](#using-the-extension)
   - [Contributing](#contributing)
   - [Project Structure](#project-structure)
   - [For Developers](#for-developers)
     - [Prerequisites](#prerequisites)
     - [Setup](#setup)
-  - [Building](#building)
+  - [Building (For Developers)](#building-for-developers)
     - [Build for Chrome](#build-for-chrome)
     - [Build for Firefox](#build-for-firefox)
   - [Loading the Extension](#loading-the-extension)
     - [Chrome](#chrome)
     - [Firefox](#firefox)
     - [Manifest Files](#manifest-files)
+  - [Roadmap](#roadmap)
   - [License](#license)
 
 ## Features
@@ -29,16 +39,60 @@ A cross-browser extension for Chrome and Firefox that highlights GitHub reposito
 - 🌐 Works on both Chrome and Firefox
 - ⚡ Lightweight and fast
 - 💾 Persistent tab highlighting
+- 🎯 Easy-to-use popup interface
+- 🎨 Customizable indent levels
 - [ ] 🎨 Highlight tabs with custom colors
-- [ ] 🎨 Customizable indent levels
-- [ ] 🎯 Easy-to-use popup interface
+- [ ] 🔧Consider files indent level while highlighting
 
 ## Installation & Usage
 
-1. Install the extension
-2. Go to any GitHub repository file page
+### Firefox (Recommended)
 
-The tab will be highlighted based on the file's indent level.
+The extension is officially published on **Firefox Add-ons (AMO)**.
+
+👉 **Install from Firefox Add-ons:**
+
+[https://addons.mozilla.org/en-US/firefox/addon/tabhighlighter/](https://addons.mozilla.org/en-US/firefox/addon/tabhighlighter/)
+
+This provides automatic updates and does not require Developer Mode.
+
+### Manual Installation
+
+Pre-built extension packages are available on the [**GitHub Releases**](https://github.com/nihaltp/tab-highlighter/releases) page.
+This is the easiest way to install the extension — no build step required.
+
+👉 **Download the latest release:**
+[https://github.com/nihaltp/tab-highlighter/releases/latest](https://github.com/nihaltp/tab-highlighter/releases/latest)
+
+Each release includes:
+
+- `tab-highlighter-chrome.zip` — for Chrome / Chromium browsers
+- `tab-highlighter-firefox.zip` — for Firefox
+
+#### Chrome / Chromium
+
+1. Download `tab-highlighter-chrome.zip`
+2. Extract the ZIP
+3. Open `chrome://extensions/`
+4. Enable **Developer mode**
+5. Click **Load unpacked**
+6. Select the extracted folder
+
+#### Firefox (manual)
+
+> ⚠️ Manual installation is intended for testing and development.
+
+> For daily use, installing from Firefox Add-ons is strongly recommended.
+
+1. Download `tab-highlighter-firefox.zip`
+2. Open `about:addons`
+3. Click the ⚙️ menu → **Install Add-on From File**
+4. Select the ZIP file
+
+### Using the Extension
+
+Go to any GitHub repository file page (e.g. browsing files in a repo).
+Tabs will be highlighted automatically.
 
 ## Contributing
 
@@ -87,7 +141,7 @@ cd tab-highlighter
 npm install
 ```
 
-## Building
+## Building (For Developers)
 
 ### Build for Chrome
 
@@ -127,6 +181,13 @@ The packaged extension will be in `dist/firefox/`.
 - `manifest.chrome.json`: Chrome-specific configuration
 - `manifest.firefox.json`: Firefox-specific configuration
 
+## Roadmap
+
+- Allow users to set custom colors for different file types
+- Add support for more browsers (e.g., Edge, Safari)
+- Consider files' indent levels while highlighting tabs
+- Chrome Web Store publishing
+
 ## License
 
-MIT License - see LICENSE file for details
+MIT License - see [LICENSE](LICENSE) file for details
