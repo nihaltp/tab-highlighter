@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tab Highlighter Settings</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+
+  <body>
+    <h1>Tab Highlighter</h1>
+
+    <div class="setting">
+      <label for="indentSize">Indent Size</label>
+      <select id="indentSize">
+        <option value="2">2</option>
+        <option value="4" selected>4</option>
+        <option value="8">8</option>
+      </select>
+    </div>
+
+    <div class="setting">
+      <label for="symbol">Indent Symbol</label>
+      <select id="symbol">
+        <option value="·">· (dot)</option>
+        <option value="_">_ (underscore)</option>
+        <option value="▏">▏ (bar)</option>
+      </select>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

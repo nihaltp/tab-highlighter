@@ -18,8 +18,11 @@
       "32": "icons/icon32.png",
       "48": "icons/icon48.png",
       "128": "icons/icon128.png"
-    }
+    },
+    "default_popup": "src/popup/popup.html"
   },
+
+  "permissions": ["storage"],
 
   "host_permissions": [
     "https://www.github.com/*/*/blob/*",

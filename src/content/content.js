@@ -4,12 +4,37 @@ const ghIndentStyles = [
   "gh-indent-red",
   "gh-indent-blue",
 ];
-const indentSize = 4; // number of spaces per indent level
-const tabReplacement = "_"; // character to replace spaces with for visibility
+let indentSize = 4; // number of spaces per indent level
+let tabReplacement = "_"; // character to replace spaces with for visibility
 
-function highlightIndents() {
+function loadSettings() {
+  if (chrome.storage) {
+    chrome.storage.sync.get(["indentSize", "tabReplacement"], (data) => {
+      let settingsChanged = false;
+
+      // check if the data type is string
+      if (data.indentSize && parseInt(data.indentSize) > 0) {
+        indentSize = parseInt(data.indentSize);
+        settingsChanged = true;
+      }
+      if (data.tabReplacement && typeof data.tabReplacement === "string") {
+        tabReplacement = data.tabReplacement;
+        settingsChanged = true;
+      }
+      // re-apply highlights with new settings
+      if (!settingsChanged) return;
+      highlightIndents(true);
+    });
+  }
+}
+
+function highlightIndents(settingsChanged = false) {
   const lines = document.querySelectorAll(".react-file-line");
   lines.forEach((line) => {
+    // if the line has already been processed, return
+    if (line.dataset.tabAdded === "true" && !settingsChanged) return;
+    line.dataset.tabAdded = "true"; // mark as processed
+
     const nodes = Array.from(line.childNodes);
 
     const node = nodes[0];
@@ -96,9 +121,6 @@ function createErrorSpan(indent, i, masterSpan) {
   masterSpan.appendChild(span);
 }
 
-// run once on load
-highlightIndents();
-
 // watch for changes to the DOM
 const observer = new MutationObserver((mutations) => {
   highlightIndents();
@@ -107,4 +129,16 @@ const observer = new MutationObserver((mutations) => {
 observer.observe(document.body, {
   childList: true,
   subtree: true,
+});
+
+loadSettings();
+
+// watch for changes to the storage
+if (chrome.storage) {
+  chrome.storage.onChanged.addListener(loadSettings);
+}
+
+// Listen for GitHub's specific navigation event
+document.addEventListener("turbo:load", () => {
+  highlightIndents();
 });
