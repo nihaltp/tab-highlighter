@@ -22,10 +22,7 @@
 
   "permissions": ["storage"],
 
-  "host_permissions": [
-    "https://github.com/*/*/blob/*",
-    "https://www.github.com/*/*/blob/*"
-  ],
+  "host_permissions": ["https://github.com/*", "https://www.github.com/*"],
 
   "action": {
     "default_title": "Tab Highlighter",
@@ -42,17 +39,17 @@
 
   "content_scripts": [
     {
-      "matches": ["https://github.com/*/*/blob/*", "https://www.github.com/*/*/blob/*"],
-      "js": ["src/content.js"],
-      "css": ["src/content.css"],
+      "matches": ["https://github.com/*", "https://www.github.com/*"],
+      "js": ["src/content/content.js"],
+      "css": ["src/content/content.css"],
       "run_at": "document_end"
     }
   ],
 
   "web_accessible_resources": [
     {
-      "resources": ["src/content.css"],
-      "matches": ["https://www.github.com/*/*/blob/*", "https://github.com/*/*/blob/*"]
+      "resources": ["src/content/content.css"],
+      "matches": ["https://www.github.com/*", "https://github.com/*"]
     }
   ],
 

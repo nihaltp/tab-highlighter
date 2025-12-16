@@ -29,6 +29,10 @@ function loadSettings() {
 }
 
 function highlightIndents(settingsChanged = false) {
+  if (!window.location.href.includes("/blob/")) {
+    return;
+  }
+
   const lines = document.querySelectorAll(".react-file-line");
   lines.forEach((line) => {
     // if the line has already been processed, return

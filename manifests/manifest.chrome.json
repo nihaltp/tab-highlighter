@@ -24,24 +24,21 @@
 
   "permissions": ["storage"],
 
-  "host_permissions": [
-    "https://www.github.com/*/*/blob/*",
-    "https://github.com/*/*/blob/*"
-  ],
+  "host_permissions": ["https://www.github.com/*", "https://github.com/*"],
 
   "content_scripts": [
     {
-      "matches": ["https://www.github.com/*/*/blob/*", "https://github.com/*/*/blob/*"],
-      "js": ["src/content.js"],
-      "css": ["src/content.css"],
+      "matches": ["https://www.github.com/*", "https://github.com/*"],
+      "js": ["src/content/content.js"],
+      "css": ["src/content/content.css"],
       "run_at": "document_end"
     }
   ],
 
   "web_accessible_sources": [
     {
-      "resources": ["src/content.css"],
-      "matches": ["https://www.github.com/*/*/blob/*", "https://github.com/*/*/blob/*"]
+      "resources": ["src/content/content.css"],
+      "matches": ["https://www.github.com/*", "https://github.com/*"]
     }
   ]
 }
