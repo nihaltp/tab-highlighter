@@ -28,11 +28,5 @@
       "css": ["src/content/content.css"],
       "run_at": "document_end"
     }
-  ],
-  "web_accessible_sources": [
-    {
-      "resources": ["src/content/content.css"],
-      "matches": ["https://www.github.com/*", "https://github.com/*"]
-    }
   ]
 }
