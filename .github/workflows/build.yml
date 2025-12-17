@@ -30,22 +30,24 @@ jobs:
       - name: Zip Chrome build
         run: |
           cd dist/chrome
-          zip -r ../../tab-highlighter-chrome.zip .
+          zip -r ../../tab-highlighter-${{ github.ref_name }}-chrome.zip .
 
       - name: Zip Firefox build
         run: |
           cd dist/firefox
-          zip -r ../../tab-highlighter-firefox.zip .
+          zip -r ../../tab-highlighter-${{ github.ref_name }}-firefox.zip .
 
       - name: Zip Edge build
         run: |
           cd dist/edge
-          zip -r ../../tab-highlighter-edge.zip .
+          zip -r ../../tab-highlighter-${{ github.ref_name }}-edge.zip .
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
+          name: Tab Highlighter v${{ github.ref_name }}
+          generate_release_notes: true
           files: |
-            tab-highlighter-chrome.zip
-            tab-highlighter-firefox.zip
-            tab-highlighter-edge.zip
+            tab-highlighter-${{ github.ref_name }}-chrome.zip
+            tab-highlighter-${{ github.ref_name }}-firefox.zip
+            tab-highlighter-${{ github.ref_name }}-edge.zip
