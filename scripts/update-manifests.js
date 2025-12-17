@@ -10,5 +10,6 @@ const update = (path) => {
 
 update("manifests/manifest.chrome.json");
 update("manifests/manifest.firefox.json");
+update("manifests/manifest.edge.json");
 
 console.log("Updated manifest versions to:", pkg.version);

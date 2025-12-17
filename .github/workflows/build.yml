@@ -37,9 +37,15 @@ jobs:
           cd dist/firefox
           zip -r ../../tab-highlighter-firefox.zip .
 
+      - name: Zip Edge build
+        run: |
+          cd dist/edge
+          zip -r ../../tab-highlighter-edge.zip .
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           files: |
             tab-highlighter-chrome.zip
             tab-highlighter-firefox.zip
+            tab-highlighter-edge.zip

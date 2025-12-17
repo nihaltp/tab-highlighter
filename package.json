@@ -6,6 +6,7 @@
     "format": "prettier --write .",
     "build:chrome": "cross-env TARGET_BROWSER=chrome node scripts/build.js",
     "build:firefox": "cross-env TARGET_BROWSER=firefox node scripts/build.js",
+    "build:edge": "cross-env TARGET_BROWSER=edge node scripts/build.js",
     "build": "node scripts/build.js",
     "version": "node scripts/update-manifests.js && git add manifests/*.json",
     "prepare": "husky"

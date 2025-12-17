@@ -5,7 +5,7 @@ const path = require("path");
 
 // Get target browser from env variable, or build both if not set
 const target = process.env.TARGET_BROWSER; // "chrome" or "firefox"
-const browsers = target ? [target] : ["chrome", "firefox"];
+const browsers = target ? [target] : ["chrome", "firefox", "edge"];
 
 browsers.forEach((browser) => {
   const distPath = path.join("dist", browser);
