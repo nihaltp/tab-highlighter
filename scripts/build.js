@@ -1,5 +1,3 @@
-// copied from github.com/AlokYadavCodes/track-my-course
-
 const fs = require("fs-extra");
 const path = require("path");
 
@@ -15,12 +13,43 @@ browsers.forEach((browser) => {
 
   // 2. Copy required directories
   fs.copySync("src", path.join(distPath, "src"));
-  fs.copySync("icons", path.join(distPath, "icons"));
 
   // 3. Copy the correct manifest
   const manifestSrc = path.join("manifests", `manifest.${browser}.json`);
-  const manifestDest = path.join(distPath, "manifest.json");
-  fs.copyFileSync(manifestSrc, manifestDest);
+  const manifest = fs.readJsonSync(manifestSrc);
+
+  // Copy manifest
+  fs.writeJsonSync(path.join(distPath, "manifest.json"), manifest, { spaces: 2 });
+
+  // Extract & copy icons
+  const iconPaths = extractIconPaths(manifest);
+
+  iconPaths.forEach((iconPath) => {
+    const src = path.join(iconPath);
+    const dest = path.join(distPath, iconPath);
+
+    fs.ensureDirSync(path.dirname(dest));
+    fs.copyFileSync(src, dest);
+  });
 
   console.log(`✅ ${browser} build created at ${distPath}`);
 });
+
+function extractIconPaths(manifest) {
+  const paths = new Set();
+
+  function walk(obj) {
+    if (!obj || typeof obj !== "object") return;
+
+    for (const value of Object.values(obj)) {
+      if (typeof value === "string" && value.startsWith("icons/")) {
+        paths.add(value);
+      } else if (typeof value === "object") {
+        walk(value);
+      }
+    }
+  }
+
+  walk(manifest);
+  return Array.from(paths);
+}
