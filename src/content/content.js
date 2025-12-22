@@ -29,42 +29,72 @@ function loadSettings() {
 }
 
 function highlightIndents(settingsChanged = false) {
+  if (window.location.href.includes("/blob/")) {
+    highlightBlobIndents(settingsChanged);
+    return;
+  } else if (window.location.href.includes("/commit/")) {
+    highlightCommitIndents(settingsChanged);
+    return;
+  }
+  return;
+}
+
+function highlightBlobIndents(settingsChanged = false) {
   if (!window.location.href.includes("/blob/")) {
     return;
   }
 
   const lines = document.querySelectorAll(".react-file-line");
+  processLines(lines, settingsChanged);
+}
+
+function processLines(lines, settingsChanged) {
   lines.forEach((line) => {
-    // if the line has already been processed, return
-    if (line.dataset.tabAdded === "true" && !settingsChanged) return;
-    line.dataset.tabAdded = "true"; // mark as processed
-
-    const nodes = Array.from(line.childNodes);
-
-    const node = nodes[0];
-
-    // if the node is not text or a span, return
-    if (node.nodeName !== "#text" && node.nodeName !== "SPAN") return;
-
-    // if the node is a span, handle it
-    if (node.nodeName === "SPAN") {
-      handleSpan(nodes);
-      return;
-    }
-
-    if (node.data === "\n") return;
-
-    // if the node is text, check if it is an indent
-    const indent = node.data.match(/^\s*/)[0];
-    if (indent.length === 0) return;
-
-    // create the master span which will hold all the spans
-    const masterSpan = document.createElement("span");
-    masterSpan.className = "gh-indent";
-
-    createIndentSpans(indent, masterSpan);
-    line.replaceChild(masterSpan, node);
+    processLine(line, settingsChanged);
   });
+}
+
+function highlightCommitIndents(settingsChanged = false) {
+  if (!window.location.href.includes("/commit/")) {
+    return;
+  }
+
+  const lines = document.querySelectorAll(".diff-text-inner");
+  lines.forEach((line) => {
+    if (line.classList.contains("color-fg-muted")) return; // skip lines like @@ -29,6 +29,10 @@
+    processLine(line, settingsChanged);
+  });
+}
+
+function processLine(line, settingsChanged) {
+  // if the line has already been processed, return
+  if (line.dataset.tabAdded === "true" && !settingsChanged) return;
+  line.dataset.tabAdded = "true"; // mark as processed
+
+  const nodes = Array.from(line.childNodes);
+  const node = nodes[0];
+
+  // if the node is not text or a span, return
+  if (node.nodeName !== "#text" && node.nodeName !== "SPAN") return;
+
+  // if the node is a span, handle it
+  if (node.nodeName === "SPAN") {
+    handleSpan(nodes);
+    return;
+  }
+
+  if (node.data === "\n") return;
+
+  // if the node is text, check if it is an indent
+  const indent = node.data.match(/^\s*/)[0];
+  if (indent.length === 0) return;
+
+  // create the master span which will hold all the spans
+  const masterSpan = document.createElement("span");
+  masterSpan.className = "gh-indent";
+
+  createIndentSpans(indent, masterSpan);
+  line.replaceChild(masterSpan, node);
 }
 
 function handleSpan(nodes) {
