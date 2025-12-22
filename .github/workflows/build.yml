@@ -45,7 +45,7 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          name: Tab Highlighter v${{ github.ref_name }}
+          name: Tab Highlighter ${{ github.ref_name }}
           generate_release_notes: true
           files: |
             tab-highlighter-${{ github.ref_name }}-chrome.zip
