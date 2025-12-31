@@ -4,6 +4,8 @@ A cross-browser extension for Chrome and Firefox that highlights GitHub reposito
 
 🦊 Available on Firefox Add-ons with automatic updates. [![Firefox Add-on](https://img.shields.io/amo/v/tabhighlighter)](https://addons.mozilla.org/en-US/firefox/addon/tabhighlighter/)
 
+✨ Available on Microsoft Edge Addons. [![Microsoft Edge Version](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/nihaltp/tab-highlighter/main/manifests/manifest.edge.json&query=$.version&label=Microsoft%20Edge&logo=microsoft-edge&color=0078D7)](https://microsoftedge.microsoft.com/addons/detail/tab-highlighter/penlfgfbglnpeodjfojhhfbifgjmcmbe)
+
 🌐 Chrome support via GitHub Releases.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) [![Open Issues](https://img.shields.io/github/issues/nihaltp/tab-highlighter)](https://github.com/nihaltp/tab-highlighter/issues) [![Pull Requests](https://img.shields.io/github/issues-pr/nihaltp/tab-highlighter)](https://github.com/nihaltp/tab-highlighter/pulls) [![Latest Release](https://img.shields.io/github/release/nihaltp/tab-highlighter.svg)](https://github.com/nihaltp/tab-highlighter/releases/latest)
@@ -15,9 +17,11 @@ A cross-browser extension for Chrome and Firefox that highlights GitHub reposito
   - [Features](#features)
   - [Installation \& Usage](#installation--usage)
     - [Firefox (Recommended)](#firefox-recommended)
+    - [Edge (Recommended)](#edge-recommended)
     - [Manual Installation](#manual-installation)
       - [Chrome / Chromium](#chrome--chromium)
       - [Firefox (manual)](#firefox-manual)
+      - [Edge (manual)](#edge-manual)
     - [Using the Extension](#using-the-extension)
   - [Contributing](#contributing)
   - [Project Structure](#project-structure)
@@ -30,6 +34,7 @@ A cross-browser extension for Chrome and Firefox that highlights GitHub reposito
   - [Loading the Extension](#loading-the-extension)
     - [Chrome](#chrome)
     - [Firefox](#firefox)
+    - [Edge](#edge)
     - [Manifest Files](#manifest-files)
   - [Roadmap](#roadmap)
   - [License](#license)
@@ -56,6 +61,14 @@ The extension is officially published on **Firefox Add-ons (AMO)**.
 
 This provides automatic updates and does not require Developer Mode.
 
+### Edge (Recommended)
+
+The extension is officially published on **Microsoft Edge Addons**.
+
+👉 **Install from Microsoft Edge Addons:**
+
+[https://microsoftedge.microsoft.com/addons/detail/tab-highlighter/penlfgfbglnpeodjfojhhfbifgjmcmbe](https://microsoftedge.microsoft.com/addons/detail/tab-highlighter/penlfgfbglnpeodjfojhhfbifgjmcmbe)
+
 ### Manual Installation
 
 Pre-built extension packages are available on the [**GitHub Releases**](https://github.com/nihaltp/tab-highlighter/releases) page.
@@ -81,13 +94,25 @@ Each release includes:
 #### Firefox (manual)
 
 > ⚠️ Manual installation is intended for testing and development.
-
+>
 > For daily use, installing from Firefox Add-ons is strongly recommended.
 
 1. Download `tab-highlighter-firefox.zip`
 2. Open `about:addons`
 3. Click the ⚙️ menu → **Install Add-on From File**
 4. Select the ZIP file
+
+#### Edge (manual)
+
+> ⚠️ Manual installation is intended for testing and development.
+>
+> For daily use, installing from Microsoft Edge Addons is strongly recommended.
+
+1. Download `tab-highlighter-edge.zip`
+2. Open `edge://extensions/`
+3. Enable **Developer mode**
+4. Click **Load unpacked**
+5. Select the extracted folder
 
 ### Using the Extension
 
@@ -102,21 +127,42 @@ Contributions are welcome! Bug fixes, feature suggestions, and pull requests are
 
 ```text
 tab_highlighter/
-├── src/
-│   ├── content.js             # Content script injected into pages
-│   └── content.css            # Content styling
+├── .github/
+│   └── workflows/
+│       └── build.yml          # GitHub Actions workflow for building the extension
+│
+├── .husky/
+│   └── pre-commit             # Pre-commit hook for linting and formatting
+│
 ├── dist/                      # Compiled output
+│
 ├── icons/                     # Extension icons
+│
 ├── manifests/
 │   ├── manifest.chrome.json   # Chrome extension manifest (Manifest V3)
-│   └── manifest.firefox.json  # Firefox extension manifest (Manifest V3)
+│   ├── manifest.firefox.json  # Firefox extension manifest (Manifest V3)
+│   └── manifest.edge.json     # Edge extension manifest (Manifest V3)
+│
+├── node_modules/              # Project dependencies
+│
 ├── scripts/
 │   ├── build.js               # Build script
+│   └── update-manifests.js    # Script to update manifest files
+│
+├── src/
+│   ├── content/
+│   │   ├── content.js             # Content script injected into pages
+│   │   └── content.css            # Content styling
+│   └── popup/
+│       ├── popup.css              # Popup styling
+│       ├── popup.html             # Popup HTML
+│       └── popup.js               # Popup JavaScript
+│
+├── .gitignore                 # Git ignore rules
 ├── .prettierrc                # Prettier configuration for consistent formatting
-├── .gitignore
-├── package.json               # Project dependencies and scripts
-├── package-lock.json          # Locked dependency versions
 ├── LICENSE                    # MIT License
+├── package-lock.json          # Locked dependency versions
+├── package.json               # Project dependencies and scripts
 └── README.md
 ```
 
@@ -176,15 +222,23 @@ The packaged extension will be in `dist/firefox/`.
 3. Navigate to `dist/firefox/manifest.json` and select it
 4. The extension will be loaded and ready to use
 
+### Edge
+
+1. Open `edge://extensions/`
+2. Enable "Developer mode" (toggle in bottom left)
+3. Click "Load unpacked"
+4. Navigate to `dist/edge/` and select it
+5. The extension will be loaded and ready to use
+
 ### Manifest Files
 
 - `manifest.chrome.json`: Chrome-specific configuration
 - `manifest.firefox.json`: Firefox-specific configuration
+- `manifest.edge.json`: Edge-specific configuration
 
 ## Roadmap
 
 - Allow users to set custom colors for different file types
-- Add support for more browsers (e.g., Edge, Safari)
 - Consider files' indent levels while highlighting tabs
 - Chrome Web Store publishing
 
