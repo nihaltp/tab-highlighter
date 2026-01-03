@@ -29,6 +29,10 @@ function loadSettings() {
 }
 
 function highlightIndents(settingsChanged = false) {
+  if (window.location.href.includes(".md")) {
+    // TODO: handle markdown files differently in the future
+    return;
+  }
   if (window.location.href.includes("/blob/")) {
     highlightBlobIndents(settingsChanged);
     return;
