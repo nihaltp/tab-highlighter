@@ -29,10 +29,6 @@ function loadSettings() {
 }
 
 function highlightIndents(settingsChanged = false) {
-  if (window.location.href.includes(".md")) {
-    // TODO: handle markdown files differently in the future
-    return;
-  }
   if (window.location.href.includes("/blob/")) {
     highlightBlobIndents(settingsChanged);
     return;
@@ -98,7 +94,8 @@ function processLine(line, settingsChanged) {
   masterSpan.className = "gh-indent";
 
   createIndentSpans(indent, masterSpan);
-  line.replaceChild(masterSpan, node);
+  line.prepend(masterSpan);
+  node.data = node.data.trimStart();
 }
 
 function handleSpan(nodes) {
