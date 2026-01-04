@@ -67,7 +67,7 @@ The extension is officially published on **Microsoft Edge Addons**.
 
 👉 **Install from Microsoft Edge Addons:**
 
-[https://microsoftedge.microsoft.com/addons/detail/tab-highlighter/penlfgfbglnpeodjfojhhfbifgjmcmbe](https://microsoftedge.microsoft.com/addons/detail/tab-highlighter/penlfgfbglnpeodjfojhhfbifgjmcmbe)
+[![Get the add-on](resources/get-the-addon-edge.webp)](https://microsoftedge.microsoft.com/addons/detail/tab-highlighter/penlfgfbglnpeodjfojhhfbifgjmcmbe)
 
 ### Manual Installation
 
