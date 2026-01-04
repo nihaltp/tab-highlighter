@@ -1,9 +1,9 @@
 {
   "manifest_version": 3,
-  "name": "Tab Highlighter: Github Tab Colorizer",
+  "name": "Tab Highlighter: GitHub Indentation Highlighter",
   "homepage_url": "https://github.com/nihaltp/tab_highlighter",
   "version": "1.2.2",
-  "description": "Highlight your GitHub tabs with custom colors for better organization.",
+  "description": "Highlight code indentation on GitHub with subtle colors.",
   "author": "Nihal T P",
   "developer": {
     "name": "Nihal T P",

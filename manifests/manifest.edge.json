@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Tab Highlighter",
+  "name": "Tab Highlighter: GitHub Indentation Highlighter",
   "version": "1.2.2",
-  "description": "Highlight your GitHub tabs with custom colors for better organization.",
+  "description": "Highlight code indentation on GitHub with subtle colors.",
   "icons": {
     "16": "icons/icon16.png",
     "32": "icons/icon32.png",
