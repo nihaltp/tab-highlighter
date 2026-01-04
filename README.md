@@ -57,7 +57,7 @@ The extension is officially published on **Firefox Add-ons (AMO)**.
 
 👉 **Install from Firefox Add-ons:**
 
-[https://addons.mozilla.org/en-US/firefox/addon/tabhighlighter/](https://addons.mozilla.org/en-US/firefox/addon/tabhighlighter/)
+[![Get the add-on](resources/get-the-addon-firefox.webp)](https://addons.mozilla.org/firefox/addon/tabhighlighter/)
 
 This provides automatic updates and does not require Developer Mode.
 
